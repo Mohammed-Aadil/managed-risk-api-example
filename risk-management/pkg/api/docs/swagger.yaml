@@ -1,0 +1,119 @@
+definitions:
+  response.RuntimeResponse:
+    properties:
+      goarch:
+        type: string
+      goos:
+        type: string
+      hostname:
+        type: string
+      numcpu:
+        type: integer
+      numgoroutine:
+        type: integer
+      runtime:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/info:
+    get:
+      consumes:
+      - application/json
+      description: returns the runtime information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.RuntimeResponse'
+      summary: Runtime information
+      tags:
+      - HTTP API
+  /api/v1/risks:
+    get:
+      consumes:
+      - application/json
+      description: List all risks available with pagination
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "503":
+          description: Service Unavailable
+      summary: List all risks available with pagination
+      tags:
+      - risks
+    post:
+      consumes:
+      - application/json
+      description: store risk details in system
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "503":
+          description: Service Unavailable
+      summary: store risk details in system
+      tags:
+      - risks
+  /api/v1/risks/:id:
+    get:
+      consumes:
+      - application/json
+      description: get risk details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "503":
+          description: Service Unavailable
+      summary: get risk details
+      tags:
+      - risks
+  /healthz:
+    get:
+      consumes:
+      - application/json
+      description: Used by kubernetes liveness prob
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "503":
+          description: Service Unavailable
+      summary: Liveness check
+      tags:
+      - Kubernetes
+  /readyz:
+    get:
+      consumes:
+      - application/json
+      description: Used by kubernetes liveness prob
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "503":
+          description: Service Unavailable
+      summary: Readiness check
+      tags:
+      - Kubernetes
+swagger: "2.0"
