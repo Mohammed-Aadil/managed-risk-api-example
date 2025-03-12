@@ -2,6 +2,11 @@
 
 This project is created and tested in linux env. I will be providing linux related commands to run and test it.
 
+Please install make from apt-get
+```
+sudo apt install make
+```
+
 To run service please do following
 
 ```
